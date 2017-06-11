@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustBlog.Core", "JustBlog.Core\JustBlog.Core.csproj", "{7DDA9E65-BA4C-4AC9-BFE5-A5FB32B470A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JustBlog", "JustBlog\JustBlog.csproj", "{45792E49-C75A-49E3-B197-397E77833B0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7DDA9E65-BA4C-4AC9-BFE5-A5FB32B470A3}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7DDA9E65-BA4C-4AC9-BFE5-A5FB32B470A3}.Debug|x86.Build.0 = Debug|Any CPU
+		{7DDA9E65-BA4C-4AC9-BFE5-A5FB32B470A3}.Release|x86.ActiveCfg = Release|Any CPU
+		{7DDA9E65-BA4C-4AC9-BFE5-A5FB32B470A3}.Release|x86.Build.0 = Release|Any CPU
+		{45792E49-C75A-49E3-B197-397E77833B0D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{45792E49-C75A-49E3-B197-397E77833B0D}.Debug|x86.Build.0 = Debug|Any CPU
+		{45792E49-C75A-49E3-B197-397E77833B0D}.Release|x86.ActiveCfg = Release|Any CPU
+		{45792E49-C75A-49E3-B197-397E77833B0D}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
