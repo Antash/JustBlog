@@ -5,7 +5,8 @@ namespace JustBlog.Core
 {
 	public interface IBlogRepository
 	{
-		IList<Post> Posts(int pageNo, int pageSize);
-		int TotalPosts();
+        IList<Post> Posts(int pageNo, int pageSize, string sortColumn, bool sortByAscending);
+        int AddPost(Post post);
+        int TotalPosts(bool checkIsPublished = true);
 	}
 }

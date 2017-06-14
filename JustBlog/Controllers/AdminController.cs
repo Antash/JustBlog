@@ -1,4 +1,7 @@
-﻿using JustBlog.Models;
+﻿using JustBlog.Core;
+using JustBlog.Core.Objects;
+using JustBlog.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +14,13 @@ namespace JustBlog.Controllers
     [Authorize]
     public class AdminController : Controller
     {
+        private readonly IBlogRepository _blogRepository;
+
+        public AdminController(IBlogRepository blogRepository)
+		{
+			_blogRepository = blogRepository;
+		}
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -32,9 +42,7 @@ namespace JustBlog.Controllers
         {
             if (ModelState.IsValid)
             {
-                //TODO : validation
                 if (FormsAuthentication.Authenticate(model.UserName, model.Password))
-                //if (model.UserName == "admin" && model.Password == "admin")
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
 
@@ -59,6 +67,51 @@ namespace JustBlog.Controllers
         public ActionResult Manage()
         {
             return View();
+        }
+
+        public ActionResult Posts(JqInViewModel jqParams)
+        {
+            var posts = _blogRepository.Posts(jqParams.page - 1, jqParams.rows,
+        jqParams.sidx, jqParams.sord == "asc");
+
+            var totalPosts = _blogRepository.TotalPosts(false);
+
+            return Json(new
+            {
+                page = jqParams.page,
+                records = totalPosts,
+                rows = posts,
+                total = Math.Ceiling(Convert.ToDouble(totalPosts) / jqParams.rows)
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ContentResult AddPost(Post post)
+        {
+            string json;
+
+            if (ModelState.IsValid)
+            {
+                var id = _blogRepository.AddPost(post);
+
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = id,
+                    success = true,
+                    message = "Post added successfully."
+                });
+            }
+            else
+            {
+                json = JsonConvert.SerializeObject(new
+                {
+                    id = 0,
+                    success = false,
+                    message = "Failed to add the post."
+                });
+            }
+
+            return Content(json, "application/json");
         }
     }
 }
