@@ -33,7 +33,8 @@ namespace JustBlog.Controllers
             if (ModelState.IsValid)
             {
                 //TODO : validation
-                if (model.UserName == "admin" && model.Password == "admin")
+                if (FormsAuthentication.Authenticate(model.UserName, model.Password))
+                //if (model.UserName == "admin" && model.Password == "admin")
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
 
@@ -53,6 +54,11 @@ namespace JustBlog.Controllers
             FormsAuthentication.SignOut();
 
             return RedirectToAction("Login", "Admin");
+        }
+
+        public ActionResult Manage()
+        {
+            return View();
         }
     }
 }
