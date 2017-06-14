@@ -8,6 +8,18 @@ namespace JustBlog
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            
+            routes.MapRoute(
+                name: "Login",
+                url: "Login",
+                defaults: new { controller = "Admin", action = "Login" }
+            );
+
+            routes.MapRoute(
+                name: "Logout",
+                url: "Logout",
+                defaults: new { controller = "Admin", action = "Logout" }
+            );
 
             routes.MapRoute(
                 name: "Default",
