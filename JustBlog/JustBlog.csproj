@@ -71,28 +71,67 @@
     <Reference Include="System.Web.Mvc">
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\packages\Ninject.Web.Common.3.2.3.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Blog\" />
+    <Folder Include="Views\Error\" />
+    <Folder Include="Content\themes\" />
+    <Folder Include="Content\themes\simple\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Models\ListViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Views\Blog\List.cshtml" />
+    <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\Shared\_PostTemplate.cshtml" />
+    <Content Include="Content\themes\simple\admin.css" />
+    <Content Include="Content\themes\simple\images\arrow.png" />
+    <Content Include="Content\themes\simple\images\back.png" />
+    <Content Include="Content\themes\simple\images\bullet.png" />
+    <Content Include="Content\themes\simple\images\graphic.png" />
+    <Content Include="Content\themes\simple\images\link.png" />
+    <Content Include="Content\themes\simple\images\logo.jpg" />
+    <Content Include="Content\themes\simple\images\logo.png" />
+    <Content Include="Content\themes\simple\images\search.png" />
+    <Content Include="Content\themes\simple\images\tabs.png" />
+    <Content Include="Content\themes\simple\style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\JustBlog.Core\JustBlog.Core.csproj">
+      <Project>{7DDA9E65-BA4C-4AC9-BFE5-A5FB32B470A3}</Project>
+      <Name>JustBlog.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
