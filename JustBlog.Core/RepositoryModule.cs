@@ -14,8 +14,7 @@ namespace JustBlog.Core
 	{
 		public override void Load()
 		{
-            //var dbconf = MySQLConfiguration.Standard;
-            var dbconf = SQLiteConfiguration.Standard;
+            var dbconf = MySQLConfiguration.Standard;
 
 			Bind<ISessionFactory>()
 				.ToMethod
