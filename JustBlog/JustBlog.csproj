@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="deploy_boromir.pubxml" />
+    <Content Include="Views\Shared\_Pager.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
