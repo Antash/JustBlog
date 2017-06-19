@@ -8,7 +8,19 @@ namespace JustBlog
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+
+            routes.MapRoute(
+                name: "Comments",
+                url: "comments",
+                defaults: new { controller = "Admin", action = "Comments" }
+            );
+
+            routes.MapRoute(
+                name: "NewComment",
+                url: "comments/new",
+                defaults: new { controller = "Admin", action = "AddComment" }
+            );
+
             routes.MapRoute(
                 "Login",
                 "Login",
