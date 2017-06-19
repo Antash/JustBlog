@@ -1,6 +1,5 @@
 ﻿using Ninject.Modules;
 using Ninject.Web.Common;
-using System.Data.Entity;
 
 namespace JustBlog.Core
 {
@@ -8,7 +7,7 @@ namespace JustBlog.Core
 	{
 		public override void Load()
 		{
-            Bind<DbContext>().To<BlogDbContext>().InRequestScope();
+            Bind<BlogDbContext>().To<BlogDbContext>().InRequestScope();
 		}
 	}
 }

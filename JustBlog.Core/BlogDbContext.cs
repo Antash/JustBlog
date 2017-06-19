@@ -7,9 +7,10 @@ namespace JustBlog.Core
     [DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class BlogDbContext : DbContext
     {
-        public BlogDbContext() 
-            : base(nameOrConnectionString: "JustBlogDbConnString")
+        public BlogDbContext() : base("JustBlogDbConnString")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<BlogDbContext>());
+            Database.SetInitializer(new BlogInitializer());
         }
 
         public DbSet<Post> Posts { get; set; }
