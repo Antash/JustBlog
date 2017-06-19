@@ -1,5 +1,5 @@
 ﻿using JustBlog.Core;
-using JustBlog.Core.Objects;
+using JustBlog.Core.Models;
 using JustBlog.Models;
 using Newtonsoft.Json;
 using System;

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using JustBlog.Core.Objects;
+using JustBlog.Core.Models;
 
 namespace JustBlog.Core
 {
