@@ -1,4 +1,6 @@
-﻿export default class CommentForm extends React.Component {
+﻿import React from 'react';
+
+export default class CommentForm extends React.Component {
     constructor() {
         super();
         this.state = {

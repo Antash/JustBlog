@@ -1,4 +1,6 @@
-﻿import CommentForm from './commentForm'
+﻿import React from 'react';
+import ReactDOM from 'react-dom';
+import CommentForm from './commentForm'
 import CommentList from './commentList'
 
 class CommentBox extends React.Component {
@@ -43,8 +45,8 @@ class CommentBox extends React.Component {
         );
     }
 }
+
 ReactDOM.render(
     <CommentBox url="/comments" submitUrl="/comments/new" pollInterval={2000} />,
-    document.getElementById("content")
+    document.getElementById("container")
 );
-

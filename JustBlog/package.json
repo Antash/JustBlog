@@ -1,0 +1,25 @@
+{
+  "name": "justblog",
+  "version": "1.0.0",
+  "description": "blog from scratch",
+  "main": "webpack.config.js",
+  "dependencies": {
+    "draft-js": "^0.10.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "remarkable": "^1.7.1"
+  },
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anton Ashmarin",
+  "license": "ISC"
+}

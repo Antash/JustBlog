@@ -1,17 +1,18 @@
 ﻿/// <binding AfterBuild='Run - Development' />
 'use strict';
 
-var path = require('path');
+const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-    context: __dirname + "/Scripts/App",
+    context: path.join(__dirname, "/Scripts/App"),
     entry: {
         commentBoxModule: './CommentBox/commentBox.js',
         postEditorModule: './PostEditor/postEditor.js'
     },
     output: {
         filename: "[name].js",
-        path: __dirname + '/Scripts/Build'
+        path: path.join(__dirname, '/Scripts/Build')
     },
     module: {
         loaders: [
@@ -20,7 +21,7 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react']
+                    presets: ["es2015", 'react']
                 }
             }
         ]
