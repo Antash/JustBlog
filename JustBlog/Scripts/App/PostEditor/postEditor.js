@@ -4,6 +4,6 @@
     }
 }
 ReactDOM.render(
-  <Hello />,
-  document.getElementById("content")
+    <Hello />,
+    document.getElementById("content")
 );
