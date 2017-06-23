@@ -1,7 +1,17 @@
 ﻿import React from 'react';
-import Remarkable from 'remarkable'
+import Remarkable from 'remarkable';
 
-export default class Comment extends React.Component {
+export interface ICommentData {
+    id?: number;
+    author: string;
+    text: string;
+}
+
+interface ICommentProps extends React.HTMLProps<HTMLDivElement> {
+    author: string
+};
+
+export class Comment extends React.Component<{ children: string, author: string }, {}> {
     rawMarkup() {
         var md = new Remarkable();
         var rawMarkup = md.render(this.props.children.toString());

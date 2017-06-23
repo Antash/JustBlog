@@ -1,15 +1,26 @@
 ﻿import React from 'react';
-import ReactDOM from 'react-dom';
 import CommentForm from './commentForm'
 import CommentList from './commentList'
+import { ICommentData } from './comment'
 
-class CommentBox extends React.Component {
+export interface ICommentBoxProps {
+    url: string;
+    submitUrl: string;
+    pollInterval: number;
+}
+
+interface ICommentBoxState {
+    data: Array<ICommentData>;
+}
+
+export class CommentBox extends React.Component<ICommentBoxProps, ICommentBoxState> {
     constructor() {
         super();
         this.state = {
             data: []
         };
     }
+
     loadCommentsFromServer() {
         var xhr = new XMLHttpRequest();
         xhr.open('get', this.props.url, true);
@@ -19,14 +30,16 @@ class CommentBox extends React.Component {
         }.bind(this);
         xhr.send();
     }
+
     componentDidMount() {
         this.loadCommentsFromServer();
         window.setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
     }
-    handleCommentSubmit(comment) {
+
+    handleCommentSubmit(comment: ICommentData) {
         var data = new FormData();
-        data.append('Author', comment.Author);
-        data.append('Text', comment.Text);
+        data.append('Author', comment.author);
+        data.append('Text', comment.text);
 
         var xhr = new XMLHttpRequest();
         xhr.open('post', this.props.submitUrl, true);
@@ -35,6 +48,7 @@ class CommentBox extends React.Component {
         }.bind(this);
         xhr.send(data);
     }
+
     render() {
         return (
             <div className="commentBox">
@@ -46,7 +60,4 @@ class CommentBox extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <CommentBox url="/comments" submitUrl="/comments/new" pollInterval={2000} />,
-    document.getElementById("container")
-);
+export default CommentBox;

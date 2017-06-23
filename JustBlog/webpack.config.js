@@ -1,27 +1,24 @@
 ﻿/// <binding AfterBuild='Run - Development' />
-'use strict';
-
-const path = require('path');
-const webpack = require('webpack');
-
 module.exports = {
-    context: path.join(__dirname, "/Scripts/App"),
-    entry: {
-        commentBoxModule: './CommentBox/commentBox.js',
-        postEditorModule: './PostEditor/postEditor.js'
-    },
+    entry: "./Scripts/App/index.tsx",
     output: {
-        filename: "[name].js",
-        path: path.join(__dirname, '/Scripts/Build')
+        filename: "./Scripts/Build/bundle.js"
     },
+
+    devtool: "source-map",
+
+    resolve: {
+        extensions: [".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+    },
+
     module: {
         loaders: [
-            {
-                test: /\.js?$/,
-                exclude: /(node_modules|bower_components)/,
+            { 
+                test: /\.tsx?$/, 
                 loader: 'babel-loader',
+                exclude: /node_modules/,
                 query: {
-                    presets: ["es2015", 'react']
+                    presets: ['react']
                 }
             }
         ]
