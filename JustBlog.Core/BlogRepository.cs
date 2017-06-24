@@ -17,7 +17,9 @@ namespace JustBlog.Core
 
         public int AddPost(Post post)
         {
-            return Context.Posts.Add(post).Id;
+            var newPost = Context.Posts.Add(post);
+            Context.SaveChanges();
+            return newPost.Id;
         }
 
         public int TotalPosts(bool checkIsPublished = true)
@@ -27,7 +29,9 @@ namespace JustBlog.Core
 
         public int AddComment(Comment comment)
         {
-            return Context.Comments.Add(comment).Id;
+            var newComment = Context.Comments.Add(comment);
+            Context.SaveChanges();
+            return newComment.Id;
         }
 
         public IList<Comment> Comments()

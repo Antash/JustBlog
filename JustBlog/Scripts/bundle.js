@@ -23480,7 +23480,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CommentBox_commentBox__["a" /* default */], { url: '/comments', submitUrl: '/comments/new', pollInterval: 2000 }), document.getElementById("commentBox"));
+__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__CommentBox_commentBox__["a" /* default */], { url: '/comments', submitUrl: '/comments/new' }), document.getElementById("commentBox"));
 
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__PostEditor_postEditor__["a" /* default */], null), document.getElementById("postEditor"));
 
@@ -35804,7 +35804,6 @@ class CommentBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
 
     componentDidMount() {
         this.loadCommentsFromServer();
-        window.setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
     }
 
     handleCommentSubmit(comment) {
@@ -35825,7 +35824,7 @@ class CommentBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
             'div',
             { className: 'commentBox' },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h1',
+                'h3',
                 null,
                 'Comments'
             ),

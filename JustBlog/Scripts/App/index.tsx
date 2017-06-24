@@ -4,7 +4,7 @@ import CommentBox from './CommentBox/commentBox';
 import PostEditor from './PostEditor/postEditor';
 
 ReactDOM.render(
-    <CommentBox url="/comments" submitUrl="/comments/new" pollInterval={2000} />,
+    <CommentBox url="/comments" submitUrl="/comments/new" />,
     document.getElementById("commentBox")
 );
 

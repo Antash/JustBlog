@@ -6,7 +6,6 @@ import { ICommentData } from './commentData'
 export interface ICommentBoxProps {
     url: string;
     submitUrl: string;
-    pollInterval: number;
 }
 
 interface ICommentBoxState {
@@ -33,7 +32,6 @@ export default class CommentBox extends React.Component<ICommentBoxProps, IComme
 
     componentDidMount() {
         this.loadCommentsFromServer();
-        window.setInterval(this.loadCommentsFromServer.bind(this), this.props.pollInterval);
     }
 
     handleCommentSubmit(comment: ICommentData) {
@@ -52,7 +50,7 @@ export default class CommentBox extends React.Component<ICommentBoxProps, IComme
     render() {
         return (
             <div className="commentBox">
-                <h1>Comments</h1>
+                <h3>Comments</h3>
                 <CommentList data={this.state.obj.data} />
                 <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
             </div>
