@@ -1,4 +1,5 @@
 ﻿using JustBlog.Core.Models;
+using Microsoft.Practices.Unity;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,28 +7,32 @@ namespace JustBlog.Core
 {
     public class BlogRepository : IBlogRepository
 	{
-		private readonly BlogDbContext _context;
-
-		public BlogRepository(BlogDbContext context)
-		{
-            _context = context;
-		}
+        [Dependency]
+        internal BlogDbContext Context { get; set; }
 
         public IList<Post> Posts(int pageNo, int pageSize, string sortColumn, bool sortByAscending)
         {
-            return Enumerable.Empty<Post>().ToList(); 
-            //return _context.Posts.ToList();
+            return Context.Posts.ToList();
         }
 
         public int AddPost(Post post)
         {
-            return _context.Posts.Add(post).Id;
+            return Context.Posts.Add(post).Id;
         }
 
         public int TotalPosts(bool checkIsPublished = true)
         {
-            return 0;
-            //return _context.Posts.Count();
+            return Context.Posts.Count();
         }
-	}
+
+        public int AddComment(Comment comment)
+        {
+            return Context.Comments.Add(comment).Id;
+        }
+
+        public IList<Comment> Comments()
+        {
+            return Context.Comments.ToList();
+        }
+    }
 }

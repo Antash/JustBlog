@@ -18,32 +18,10 @@ namespace JustBlog.Controllers
     public class AdminController : Controller
     {
         private readonly IBlogRepository _blogRepository;
-        private readonly IList<CommentModel> _comments;
 
         public AdminController(IBlogRepository blogRepository)
         {
             _blogRepository = blogRepository;
-            _comments = new List<CommentModel>
-            {
-                new CommentModel
-                {
-                    Id = 1,
-                    Author = "Daniel Lo Nigro",
-                    Text = "Hello ReactJS.NET World!"
-                },
-                new CommentModel
-                {
-                    Id = 2,
-                    Author = "Pete Hunt",
-                    Text = "This is one comment"
-                },
-                new CommentModel
-                {
-                    Id = 3,
-                    Author = "Jordan Walke",
-                    Text = "This is *another* comment"
-                },
-            };
         }
 
         [AllowAnonymous]
@@ -97,15 +75,13 @@ namespace JustBlog.Controllers
         [OutputCache(Location = OutputCacheLocation.None)]
         public JsonCamelCaseResult Comments()
         {
-            return new JsonCamelCaseResult(new { data = _comments }, JsonRequestBehavior.AllowGet);
+            return new JsonCamelCaseResult(new { data = _blogRepository.Comments() }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult AddComment(CommentModel comment)
+        public ActionResult AddComment(Comment comment)
         {
-            // Create a fake ID for this comment
-            comment.Id = _comments.Count + 1;
-            _comments.Add(comment);
+            _blogRepository.AddComment(comment);
             return Content("Success :)");
         }
 
