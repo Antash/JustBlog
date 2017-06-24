@@ -22,7 +22,7 @@ namespace JustBlog.Controllers
 			var viewModel = new ListViewModel(_blogRepository, p);
 
 			ViewBag.Title = "Latest Posts";
-			return View("List", viewModel);
+			return View();
 		}
     }
 }
