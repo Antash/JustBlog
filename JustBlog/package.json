@@ -4,11 +4,13 @@
   "description": "blog from scratch",
   "main": "index.js",
   "dependencies": {
+    "draft-js": "^0.10.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "remarkable": "^1.7.1"
   },
   "devDependencies": {
+    "@types/draft-js": "^0.10.4",
     "@types/react": "^15.0.30",
     "@types/react-dom": "^15.5.0",
     "babel": "^6.23.0",
