@@ -16,7 +16,7 @@ namespace JustBlog.Core
         public IList<Post> Posts(int pageNo, int pageSize, string sortColumn, bool sortByAscending)
         {
             return Enumerable.Empty<Post>().ToList(); 
-            return _context.Posts.ToList();
+            //return _context.Posts.ToList();
         }
 
         public int AddPost(Post post)
@@ -27,7 +27,7 @@ namespace JustBlog.Core
         public int TotalPosts(bool checkIsPublished = true)
         {
             return 0;
-            return _context.Posts.Count();
+            //return _context.Posts.Count();
         }
 	}
 }

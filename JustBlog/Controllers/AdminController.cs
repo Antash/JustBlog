@@ -9,6 +9,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using Newtonsoft.Json.Serialization;
+using JustBlog.Utils;
 
 namespace JustBlog.Controllers
 {
@@ -19,30 +21,30 @@ namespace JustBlog.Controllers
         private readonly IList<CommentModel> _comments;
 
         public AdminController(IBlogRepository blogRepository)
-		{
-			_blogRepository = blogRepository;
+        {
+            _blogRepository = blogRepository;
             _comments = new List<CommentModel>
             {
                 new CommentModel
                 {
-                    id = 1,
-                    author = "Daniel Lo Nigro",
-                    text = "Hello ReactJS.NET World!"
+                    Id = 1,
+                    Author = "Daniel Lo Nigro",
+                    Text = "Hello ReactJS.NET World!"
                 },
                 new CommentModel
                 {
-                    id = 2,
-                    author = "Pete Hunt",
-                    text = "This is one comment"
+                    Id = 2,
+                    Author = "Pete Hunt",
+                    Text = "This is one comment"
                 },
                 new CommentModel
                 {
-                    id = 3,
-                    author = "Jordan Walke",
-                    text = "This is *another* comment"
+                    Id = 3,
+                    Author = "Jordan Walke",
+                    Text = "This is *another* comment"
                 },
             };
-		}
+        }
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -93,34 +95,18 @@ namespace JustBlog.Controllers
         }
 
         [OutputCache(Location = OutputCacheLocation.None)]
-        public JsonResult Comments()
+        public JsonCamelCaseResult Comments()
         {
-            return Json(_comments, JsonRequestBehavior.AllowGet);
+            return new JsonCamelCaseResult(new { data = _comments }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public ActionResult AddComment(CommentModel comment)
         {
             // Create a fake ID for this comment
-            comment.id = _comments.Count + 1;
+            comment.Id = _comments.Count + 1;
             _comments.Add(comment);
             return Content("Success :)");
-        }
-
-        public ActionResult Posts(JqInViewModel jqParams)
-        {
-            var posts = _blogRepository.Posts(jqParams.page - 1, jqParams.rows,
-        jqParams.sidx, jqParams.sord == "asc");
-
-            var totalPosts = _blogRepository.TotalPosts(false);
-
-            return Json(new
-            {
-                page = jqParams.page,
-                records = totalPosts,
-                rows = posts,
-                total = Math.Ceiling(Convert.ToDouble(totalPosts) / jqParams.rows)
-            }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

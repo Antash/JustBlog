@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { ICommentData } from './comment'
+import { ICommentData } from './commentData'
 
 export interface ICommentFormProps {
     onCommentSubmit: (comment: ICommentData) => void;
@@ -48,4 +48,4 @@ export default class CommentForm extends React.Component<ICommentFormProps, ICom
             </form>
         );
     }
-};
+}

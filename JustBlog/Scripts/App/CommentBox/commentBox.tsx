@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import CommentForm from './commentForm'
 import CommentList from './commentList'
-import { ICommentData } from './comment'
+import { ICommentData } from './commentData'
 
 export interface ICommentBoxProps {
     url: string;
@@ -10,14 +10,14 @@ export interface ICommentBoxProps {
 }
 
 interface ICommentBoxState {
-    data: Array<ICommentData>;
+    obj: { data: Array<ICommentData> };
 }
 
-export class CommentBox extends React.Component<ICommentBoxProps, ICommentBoxState> {
+export default class CommentBox extends React.Component<ICommentBoxProps, ICommentBoxState> {
     constructor() {
         super();
         this.state = {
-            data: []
+            obj: { data: []}
         };
     }
 
@@ -26,7 +26,7 @@ export class CommentBox extends React.Component<ICommentBoxProps, ICommentBoxSta
         xhr.open('get', this.props.url, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
-            this.setState({ data: data });
+            this.setState({ obj: data });
         }.bind(this);
         xhr.send();
     }
@@ -53,11 +53,9 @@ export class CommentBox extends React.Component<ICommentBoxProps, ICommentBoxSta
         return (
             <div className="commentBox">
                 <h1>Comments</h1>
-                <CommentList data={this.state.data} />
+                <CommentList data={this.state.obj.data} />
                 <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
             </div>
         );
     }
 }
-
-export default CommentBox;

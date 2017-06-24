@@ -125,9 +125,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Models\CommentModel.cs" />
-    <Compile Include="Models\JqInViewModel.cs" />
     <Compile Include="Models\ListViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Utils\JsonCamelCaseResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\themes\simple\jqueryuicustom\css\sunny\images\ui-bg_diagonals-medium_20_d34d17_40x40.png" />
@@ -718,10 +718,12 @@
     <TypeScriptCompile Include="Scripts\%40Types\alltypes.d.ts" />
     <TypeScriptCompile Include="Scripts\App\CommentBox\commentBox.tsx" />
     <TypeScriptCompile Include="Scripts\App\CommentBox\comment.tsx" />
+    <TypeScriptCompile Include="Scripts\App\CommentBox\commentData.tsx" />
     <TypeScriptCompile Include="Scripts\App\CommentBox\commentForm.tsx" />
     <TypeScriptCompile Include="Scripts\App\CommentBox\commentList.tsx" />
     <TypeScriptCompile Include="Scripts\App\index.tsx" />
     <TypeScriptCompile Include="Scripts\App\PostEditor\postEditor.tsx" />
+    <Content Include="Scripts\bundle.js" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />

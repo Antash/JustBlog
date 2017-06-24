@@ -7060,39 +7060,9 @@ module.exports = getEventCharCode;
 
 /***/ }),
 /* 53 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_remarkable__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_remarkable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_remarkable__);
+/***/ (function(module, exports) {
 
 
-
-;
-
-class Comment extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-    rawMarkup() {
-        var md = new __WEBPACK_IMPORTED_MODULE_1_remarkable___default.a();
-        var rawMarkup = md.render(this.props.children.toString());
-        return { __html: rawMarkup };
-    }
-    render() {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'comment' },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'h2',
-                { className: 'commentAuthor' },
-                this.props.author
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { dangerouslySetInnerHTML: this.rawMarkup() })
-        );
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = Comment;
-;
 
 /***/ }),
 /* 54 */
@@ -25335,8 +25305,9 @@ module.exports = ReactDOMInvalidARIAHook;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__commentForm__ = __webpack_require__(195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__commentList__ = __webpack_require__(248);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__comment__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__commentList__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__commentData__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__commentData___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__commentData__);
 
 
 
@@ -25346,7 +25317,7 @@ class CommentBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
     constructor() {
         super();
         this.state = {
-            data: []
+            obj: { data: [] }
         };
     }
 
@@ -25355,7 +25326,7 @@ class CommentBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
         xhr.open('get', this.props.url, true);
         xhr.onload = function () {
             var data = JSON.parse(xhr.responseText);
-            this.setState({ data: data });
+            this.setState({ obj: data });
         }.bind(this);
         xhr.send();
     }
@@ -25387,15 +25358,13 @@ class CommentBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
                 null,
                 'Comments'
             ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__commentList__["a" /* default */], { data: this.state.data }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2__commentList__["a" /* default */], { data: this.state.obj.data }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__commentForm__["a" /* default */], { onCommentSubmit: this.handleCommentSubmit.bind(this) })
         );
     }
 }
-/* unused harmony export CommentBox */
+/* harmony export (immutable) */ __webpack_exports__["a"] = CommentBox;
 
-
-/* harmony default export */ __webpack_exports__["a"] = (CommentBox);
 
 /***/ }),
 /* 195 */
@@ -25404,7 +25373,8 @@ class CommentBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__comment__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__commentData__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__commentData___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__commentData__);
 
 
 
@@ -25453,20 +25423,87 @@ class CommentForm extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
     }
 }
 /* harmony export (immutable) */ __webpack_exports__["a"] = CommentForm;
-;
+
 
 /***/ }),
 /* 196 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__comment__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__commentData__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__commentData___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__commentData__);
+
+
+
+
+class CommentList extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+    render() {
+        var commentNodes = this.props.data.map(function (comment) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_1__comment__["a" /* default */],
+                { author: comment.author, key: comment.id },
+                comment.text
+            );
+        });
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'commentList' },
+            commentNodes
+        );
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = CommentList;
+
+
+/***/ }),
+/* 197 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_remarkable__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_remarkable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_remarkable__);
+
+
+
+class Comment extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
+    rawMarkup() {
+        var md = new __WEBPACK_IMPORTED_MODULE_1_remarkable___default.a();
+        var rawMarkup = md.render(this.props.children.toString());
+        return { __html: rawMarkup };
+    }
+    render() {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'comment' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'h2',
+                { className: 'commentAuthor' },
+                this.props.author
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', { dangerouslySetInnerHTML: this.rawMarkup() })
+        );
+    }
+}
+/* harmony export (immutable) */ __webpack_exports__["a"] = Comment;
+
+
+/***/ }),
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(197);
+module.exports = __webpack_require__(199);
 
 
 /***/ }),
-/* 197 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25477,10 +25514,10 @@ module.exports = __webpack_require__(197);
  */
 
 var assign       = __webpack_require__(7).assign;
-var Renderer     = __webpack_require__(198);
-var ParserCore   = __webpack_require__(200);
-var ParserBlock  = __webpack_require__(211);
-var ParserInline = __webpack_require__(226);
+var Renderer     = __webpack_require__(200);
+var ParserCore   = __webpack_require__(202);
+var ParserBlock  = __webpack_require__(213);
+var ParserInline = __webpack_require__(228);
 var Ruler        = __webpack_require__(34);
 
 /**
@@ -25488,9 +25525,9 @@ var Ruler        = __webpack_require__(34);
  */
 
 var config = {
-  'default':    __webpack_require__(245),
-  'full':       __webpack_require__(246),
-  'commonmark': __webpack_require__(247)
+  'default':    __webpack_require__(247),
+  'full':       __webpack_require__(248),
+  'commonmark': __webpack_require__(249)
 };
 
 /**
@@ -25668,7 +25705,7 @@ module.exports.utils = __webpack_require__(7);
 
 
 /***/ }),
-/* 198 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -25679,7 +25716,7 @@ module.exports.utils = __webpack_require__(7);
  */
 
 var utils = __webpack_require__(7);
-var rules = __webpack_require__(199);
+var rules = __webpack_require__(201);
 
 /**
  * Expose `Renderer`
@@ -25750,7 +25787,7 @@ Renderer.prototype.render = function (tokens, options, env) {
 
 
 /***/ }),
-/* 199 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26186,7 +26223,7 @@ module.exports = rules;
 
 
 /***/ }),
-/* 200 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26203,15 +26240,15 @@ var Ruler = __webpack_require__(34);
  */
 
 var _rules = [
-  [ 'block',          __webpack_require__(201)          ],
-  [ 'abbr',           __webpack_require__(202)           ],
-  [ 'references',     __webpack_require__(203)     ],
-  [ 'inline',         __webpack_require__(204)         ],
-  [ 'footnote_tail',  __webpack_require__(205)  ],
-  [ 'abbr2',          __webpack_require__(206)          ],
-  [ 'replacements',   __webpack_require__(207)   ],
-  [ 'smartquotes',    __webpack_require__(208)    ],
-  [ 'linkify',        __webpack_require__(209)        ]
+  [ 'block',          __webpack_require__(203)          ],
+  [ 'abbr',           __webpack_require__(204)           ],
+  [ 'references',     __webpack_require__(205)     ],
+  [ 'inline',         __webpack_require__(206)         ],
+  [ 'footnote_tail',  __webpack_require__(207)  ],
+  [ 'abbr2',          __webpack_require__(208)          ],
+  [ 'replacements',   __webpack_require__(209)   ],
+  [ 'smartquotes',    __webpack_require__(210)    ],
+  [ 'linkify',        __webpack_require__(211)        ]
 ];
 
 /**
@@ -26251,7 +26288,7 @@ module.exports = Core;
 
 
 /***/ }),
-/* 201 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26275,7 +26312,7 @@ module.exports = function block(state) {
 
 
 /***/ }),
-/* 202 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26352,7 +26389,7 @@ module.exports = function abbr(state) {
 
 
 /***/ }),
-/* 203 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26457,7 +26494,7 @@ module.exports = function references(state) {
 
 
 /***/ }),
-/* 204 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26477,7 +26514,7 @@ module.exports = function inline(state) {
 
 
 /***/ }),
-/* 205 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26579,7 +26616,7 @@ module.exports = function footnote_block(state) {
 
 
 /***/ }),
-/* 206 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26674,7 +26711,7 @@ module.exports = function abbr2(state) {
 
 
 /***/ }),
-/* 207 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26745,7 +26782,7 @@ module.exports = function replace(state) {
 
 
 /***/ }),
-/* 208 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26865,7 +26902,7 @@ module.exports = function smartquotes(state) {
 
 
 /***/ }),
-/* 209 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -26876,7 +26913,7 @@ module.exports = function smartquotes(state) {
 
 
 
-var Autolinker = __webpack_require__(210);
+var Autolinker = __webpack_require__(212);
 
 
 var LINK_SCAN_RE = /www|@|\:\/\//;
@@ -27033,7 +27070,7 @@ module.exports = function linkify(state) {
 
 
 /***/ }),
-/* 210 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function (root, factory) {
@@ -29363,7 +29400,7 @@ return Autolinker;
 
 
 /***/ }),
-/* 211 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29374,25 +29411,25 @@ return Autolinker;
  */
 
 var Ruler      = __webpack_require__(34);
-var StateBlock = __webpack_require__(212);
+var StateBlock = __webpack_require__(214);
 
 /**
  * Parser rules
  */
 
 var _rules = [
-  [ 'code',       __webpack_require__(213) ],
-  [ 'fences',     __webpack_require__(214),     [ 'paragraph', 'blockquote', 'list' ] ],
-  [ 'blockquote', __webpack_require__(215), [ 'paragraph', 'blockquote', 'list' ] ],
-  [ 'hr',         __webpack_require__(216),         [ 'paragraph', 'blockquote', 'list' ] ],
-  [ 'list',       __webpack_require__(217),       [ 'paragraph', 'blockquote' ] ],
-  [ 'footnote',   __webpack_require__(218),   [ 'paragraph' ] ],
-  [ 'heading',    __webpack_require__(219),    [ 'paragraph', 'blockquote' ] ],
-  [ 'lheading',   __webpack_require__(220) ],
-  [ 'htmlblock',  __webpack_require__(221),  [ 'paragraph', 'blockquote' ] ],
-  [ 'table',      __webpack_require__(223),      [ 'paragraph' ] ],
-  [ 'deflist',    __webpack_require__(224),    [ 'paragraph' ] ],
-  [ 'paragraph',  __webpack_require__(225) ]
+  [ 'code',       __webpack_require__(215) ],
+  [ 'fences',     __webpack_require__(216),     [ 'paragraph', 'blockquote', 'list' ] ],
+  [ 'blockquote', __webpack_require__(217), [ 'paragraph', 'blockquote', 'list' ] ],
+  [ 'hr',         __webpack_require__(218),         [ 'paragraph', 'blockquote', 'list' ] ],
+  [ 'list',       __webpack_require__(219),       [ 'paragraph', 'blockquote' ] ],
+  [ 'footnote',   __webpack_require__(220),   [ 'paragraph' ] ],
+  [ 'heading',    __webpack_require__(221),    [ 'paragraph', 'blockquote' ] ],
+  [ 'lheading',   __webpack_require__(222) ],
+  [ 'htmlblock',  __webpack_require__(223),  [ 'paragraph', 'blockquote' ] ],
+  [ 'table',      __webpack_require__(225),      [ 'paragraph' ] ],
+  [ 'deflist',    __webpack_require__(226),    [ 'paragraph' ] ],
+  [ 'paragraph',  __webpack_require__(227) ]
 ];
 
 /**
@@ -29525,7 +29562,7 @@ module.exports = ParserBlock;
 
 
 /***/ }),
-/* 212 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29690,7 +29727,7 @@ module.exports = StateBlock;
 
 
 /***/ }),
-/* 213 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29733,7 +29770,7 @@ module.exports = function code(state, startLine, endLine/*, silent*/) {
 
 
 /***/ }),
-/* 214 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29831,7 +29868,7 @@ module.exports = function fences(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 215 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29971,7 +30008,7 @@ module.exports = function blockquote(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 216 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30023,7 +30060,7 @@ module.exports = function hr(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 217 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30296,7 +30333,7 @@ module.exports = function list(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 218 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30370,7 +30407,7 @@ module.exports = function footnote(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 219 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30435,7 +30472,7 @@ module.exports = function heading(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 220 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30497,7 +30534,7 @@ module.exports = function lheading(state, startLine, endLine/*, silent*/) {
 
 
 /***/ }),
-/* 221 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30506,7 +30543,7 @@ module.exports = function lheading(state, startLine, endLine/*, silent*/) {
 
 
 
-var block_names = __webpack_require__(222);
+var block_names = __webpack_require__(224);
 
 
 var HTML_TAG_OPEN_RE = /^<([a-zA-Z]{1,15})[\s\/>]/;
@@ -30578,7 +30615,7 @@ module.exports = function htmlblock(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 222 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30647,7 +30684,7 @@ module.exports = html_blocks;
 
 
 /***/ }),
-/* 223 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30792,7 +30829,7 @@ module.exports = function table(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 224 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31006,7 +31043,7 @@ module.exports = function deflist(state, startLine, endLine, silent) {
 
 
 /***/ }),
-/* 225 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31072,7 +31109,7 @@ module.exports = function paragraph(state, startLine/*, endLine*/) {
 
 
 /***/ }),
-/* 226 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31091,22 +31128,22 @@ var utils       = __webpack_require__(7);
  */
 
 var _rules = [
-  [ 'text',            __webpack_require__(227) ],
-  [ 'newline',         __webpack_require__(228) ],
-  [ 'escape',          __webpack_require__(229) ],
-  [ 'backticks',       __webpack_require__(230) ],
-  [ 'del',             __webpack_require__(231) ],
-  [ 'ins',             __webpack_require__(232) ],
-  [ 'mark',            __webpack_require__(233) ],
-  [ 'emphasis',        __webpack_require__(234) ],
-  [ 'sub',             __webpack_require__(235) ],
-  [ 'sup',             __webpack_require__(236) ],
-  [ 'links',           __webpack_require__(237) ],
-  [ 'footnote_inline', __webpack_require__(238) ],
-  [ 'footnote_ref',    __webpack_require__(239) ],
-  [ 'autolink',        __webpack_require__(240) ],
-  [ 'htmltag',         __webpack_require__(242) ],
-  [ 'entity',          __webpack_require__(244) ]
+  [ 'text',            __webpack_require__(229) ],
+  [ 'newline',         __webpack_require__(230) ],
+  [ 'escape',          __webpack_require__(231) ],
+  [ 'backticks',       __webpack_require__(232) ],
+  [ 'del',             __webpack_require__(233) ],
+  [ 'ins',             __webpack_require__(234) ],
+  [ 'mark',            __webpack_require__(235) ],
+  [ 'emphasis',        __webpack_require__(236) ],
+  [ 'sub',             __webpack_require__(237) ],
+  [ 'sup',             __webpack_require__(238) ],
+  [ 'links',           __webpack_require__(239) ],
+  [ 'footnote_inline', __webpack_require__(240) ],
+  [ 'footnote_ref',    __webpack_require__(241) ],
+  [ 'autolink',        __webpack_require__(242) ],
+  [ 'htmltag',         __webpack_require__(244) ],
+  [ 'entity',          __webpack_require__(246) ]
 ];
 
 /**
@@ -31240,7 +31277,7 @@ module.exports = ParserInline;
 
 
 /***/ }),
-/* 227 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31299,7 +31336,7 @@ module.exports = function text(state, silent) {
 
 
 /***/ }),
-/* 228 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31360,7 +31397,7 @@ module.exports = function newline(state, silent) {
 
 
 /***/ }),
-/* 229 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31416,7 +31453,7 @@ module.exports = function escape(state, silent) {
 
 
 /***/ }),
-/* 230 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31469,7 +31506,7 @@ module.exports = function backticks(state, silent) {
 
 
 /***/ }),
-/* 231 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31560,7 +31597,7 @@ module.exports = function del(state, silent) {
 
 
 /***/ }),
-/* 232 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31651,7 +31688,7 @@ module.exports = function ins(state, silent) {
 
 
 /***/ }),
-/* 233 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31742,7 +31779,7 @@ module.exports = function del(state, silent) {
 
 
 /***/ }),
-/* 234 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31898,7 +31935,7 @@ module.exports = function emphasis(state, silent) {
 
 
 /***/ }),
-/* 235 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -31963,7 +32000,7 @@ module.exports = function sub(state, silent) {
 
 
 /***/ }),
-/* 236 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32028,7 +32065,7 @@ module.exports = function sup(state, silent) {
 
 
 /***/ }),
-/* 237 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32205,7 +32242,7 @@ module.exports = function links(state, silent) {
 
 
 /***/ }),
-/* 238 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32265,7 +32302,7 @@ module.exports = function footnote_inline(state, silent) {
 
 
 /***/ }),
-/* 239 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32334,7 +32371,7 @@ module.exports = function footnote_ref(state, silent) {
 
 
 /***/ }),
-/* 240 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32342,7 +32379,7 @@ module.exports = function footnote_ref(state, silent) {
 
 
 
-var url_schemas   = __webpack_require__(241);
+var url_schemas   = __webpack_require__(243);
 var normalizeLink = __webpack_require__(89);
 
 
@@ -32419,7 +32456,7 @@ module.exports = function autolink(state, silent) {
 
 
 /***/ }),
-/* 241 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32598,7 +32635,7 @@ module.exports = [
 
 
 /***/ }),
-/* 242 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32607,7 +32644,7 @@ module.exports = [
 
 
 
-var HTML_TAG_RE = __webpack_require__(243).HTML_TAG_RE;
+var HTML_TAG_RE = __webpack_require__(245).HTML_TAG_RE;
 
 
 function isLetter(ch) {
@@ -32654,7 +32691,7 @@ module.exports = function htmltag(state, silent) {
 
 
 /***/ }),
-/* 243 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32720,7 +32757,7 @@ module.exports.HTML_TAG_RE = HTML_TAG_RE;
 
 
 /***/ }),
-/* 244 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32775,7 +32812,7 @@ module.exports = function entity(state, silent) {
 
 
 /***/ }),
-/* 245 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32862,7 +32899,7 @@ module.exports = {
 
 
 /***/ }),
-/* 246 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32907,7 +32944,7 @@ module.exports = {
 
 
 /***/ }),
-/* 247 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -32983,36 +33020,6 @@ module.exports = {
   }
 };
 
-
-/***/ }),
-/* 248 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__comment__ = __webpack_require__(53);
-
-
-
-class CommentList extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
-    render() {
-        var commentNodes = this.props.data.map(function (comment) {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                __WEBPACK_IMPORTED_MODULE_1__comment__["a" /* Comment */],
-                { author: comment.author, key: comment.id, children: comment.text },
-                comment.text
-            );
-        });
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { className: 'commentList' },
-            commentNodes
-        );
-    }
-}
-/* harmony export (immutable) */ __webpack_exports__["a"] = CommentList;
-;
 
 /***/ })
 /******/ ]);
