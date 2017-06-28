@@ -8,6 +8,7 @@ export interface ICommentBoxProps {
     url: string;
     submitUrl: string;
     deleteUrl: string;
+    likeUrl: string;
 }
 
 interface ICommentBoxState {
@@ -43,11 +44,20 @@ export default class CommentBox extends React.Component<ICommentBoxProps, IComme
         Ajax.post(this.props.deleteUrl, data, this.loadCommentsFromServer.bind(this));
     }
 
+    handleCommentLike(id: number) {
+        var data = new FormData();
+        data.append('Id', id);
+        Ajax.post(this.props.likeUrl, data, this.loadCommentsFromServer.bind(this));
+    }
+
     render() {
         return (
             <div className="commentBox">
                 <h3>Comments</h3>
-                <CommentList data={this.state.data} onCommentDelete={this.handleCommentDelete.bind(this)} />
+                <CommentList
+                    data={this.state.data}
+                    onCommentDelete={this.handleCommentDelete.bind(this)}
+                    onCommentLike={this.handleCommentLike.bind(this)} />
                 <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
             </div>
         );

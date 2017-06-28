@@ -53,5 +53,19 @@ namespace JustBlog.Core
                 throw new ArgumentOutOfRangeException();
             }
         }
+
+        public void LikeComment(int id)
+        {
+            var comment = Context.Comments.Single(c => c.Id == id);
+            if (comment != null)
+            {
+                comment.Likes++;
+                Context.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

@@ -93,6 +93,13 @@ namespace JustBlog.Controllers
         }
 
         [HttpPost]
+        public ActionResult LikeComment(int id)
+        {
+            _blogRepository.LikeComment(id);
+            return new JsonCamelCaseResult("Like success", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
         public ContentResult AddPost(Post post)
         {
             string json;

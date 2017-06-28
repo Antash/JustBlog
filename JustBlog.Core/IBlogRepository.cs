@@ -11,5 +11,6 @@ namespace JustBlog.Core
         int AddComment(Comment comment);
         IList<Comment> Comments();
         void DeleteComment(int id);
+        void LikeComment(int id);
     }
 }

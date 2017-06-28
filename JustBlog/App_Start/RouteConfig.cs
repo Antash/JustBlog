@@ -28,6 +28,12 @@ namespace JustBlog
             );
 
             routes.MapRoute(
+                name: "LikeComment",
+                url: "comments/like",
+                defaults: new { controller = "Admin", action = "LikeComment" }
+            );
+
+            routes.MapRoute(
                 "Login",
                 "Login",
                 new { controller = "Admin", action = "Login" }
