@@ -2,6 +2,7 @@
 using Microsoft.Practices.Unity;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace JustBlog.Core
 {
@@ -37,6 +38,20 @@ namespace JustBlog.Core
         public IList<Comment> Comments()
         {
             return Context.Comments.ToList();
+        }
+
+        public void DeleteComment(int id)
+        {
+            var comment = Context.Comments.Single(c => c.Id == id);
+            if (comment != null)
+            {
+                Context.Comments.Remove(comment);
+                Context.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

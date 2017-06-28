@@ -151,6 +151,7 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <TypeScriptCompile Include="Scripts\App\Utils\ajax.tsx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JustBlog.Core\JustBlog.Core.csproj">

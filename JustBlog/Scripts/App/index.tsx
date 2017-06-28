@@ -4,7 +4,7 @@ import CommentBox from './CommentBox/commentBox';
 import PostEditor from './PostEditor/postEditor';
 
 ReactDOM.render(
-    <CommentBox url="/comments" submitUrl="/comments/new" />,
+    <CommentBox url="/comments" submitUrl="/comments/new" deleteUrl="/comments/del" />,
     document.getElementById("commentBox")
 );
 

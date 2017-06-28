@@ -22,6 +22,12 @@ namespace JustBlog
             );
 
             routes.MapRoute(
+                name: "DeleteComment",
+                url: "comments/del",
+                defaults: new { controller = "Admin", action = "DeleteComment" }
+            );
+
+            routes.MapRoute(
                 "Login",
                 "Login",
                 new { controller = "Admin", action = "Login" }

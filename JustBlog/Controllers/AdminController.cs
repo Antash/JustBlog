@@ -82,7 +82,14 @@ namespace JustBlog.Controllers
         public ActionResult AddComment(Comment comment)
         {
             _blogRepository.AddComment(comment);
-            return Content("Success :)");
+            return new JsonCamelCaseResult("Add success", JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteComment(int id)
+        {
+            _blogRepository.DeleteComment(id);
+            return new JsonCamelCaseResult("Delete success", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

@@ -10,5 +10,6 @@ namespace JustBlog.Core
         int TotalPosts(bool checkIsPublished = true);
         int AddComment(Comment comment);
         IList<Comment> Comments();
+        void DeleteComment(int id);
     }
 }
