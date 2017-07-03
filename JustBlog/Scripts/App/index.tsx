@@ -1,8 +1,11 @@
 ﻿import React from 'react';
 import ReactDOM from 'react-dom';
-import CommentBox from './CommentBox/commentBox';
-import PostEditor from './PostEditor/postEditor';
+//import CommentBox from './Components/commentBox';
+//import PostEditor from './Components/postEditor';
+import Layout from './Pages/layout';
+import { HashRouter } from 'react-router-dom';
 
+/*
 ReactDOM.render(
     <CommentBox
         url="/comments"
@@ -15,4 +18,11 @@ ReactDOM.render(
 ReactDOM.render(
     <PostEditor />,
     document.getElementById("postEditor")
+);*/
+
+ReactDOM.render(
+    <HashRouter>
+        <Layout />
+    </HashRouter>,
+    document.getElementById("app")
 );

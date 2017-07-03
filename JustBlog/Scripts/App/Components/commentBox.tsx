@@ -1,7 +1,7 @@
 ﻿import React from 'react';
-import CommentForm from './commentForm'
-import CommentList from './commentList'
-import { ICommentData } from './commentData'
+import CommentForm from './CommentBox/commentForm'
+import CommentList from './CommentBox/commentList'
+import { ICommentData } from './CommentBox/commentData'
 import { Ajax } from '../Utils/ajax'
 
 export interface ICommentBoxProps {

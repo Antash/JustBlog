@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Editor, EditorState, RichUtils } from 'draft-js';
-import EditorToolbar from './editorToolbar';
+import EditorToolbar from './PostEditor/editorToolbar';
 
 export interface IMyEditorState {
     editorState: EditorState;
