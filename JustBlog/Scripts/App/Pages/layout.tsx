@@ -17,7 +17,6 @@ export default class Layout extends React.Component<{}, {}> {
                 <div>
                 hello world!
                 </div>
-                <Footer />
 
                 <Switch>
                     <Route exact path="/" component={Home} />
@@ -25,6 +24,8 @@ export default class Layout extends React.Component<{}, {}> {
                     <Route path="/post" component={Post} />
                     <Route path="/contact" component={Contact} />
                 </Switch>
+
+                <Footer />
             </div>
         );
     }
