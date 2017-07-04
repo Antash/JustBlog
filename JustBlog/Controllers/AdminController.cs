@@ -14,7 +14,7 @@ using JustBlog.Utils;
 
 namespace JustBlog.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AdminController : Controller
     {
         private readonly IBlogRepository _blogRepository;
@@ -24,7 +24,7 @@ namespace JustBlog.Controllers
             _blogRepository = blogRepository;
         }
 
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
             if (User.Identity.IsAuthenticated)
@@ -40,7 +40,7 @@ namespace JustBlog.Controllers
             return View();
         }
 
-        [HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
+        //[HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
             if (ModelState.IsValid)

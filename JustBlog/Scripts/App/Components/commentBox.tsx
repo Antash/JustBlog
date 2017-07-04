@@ -33,6 +33,10 @@ export default class CommentBox extends React.Component<{}, ICommentBoxState> {
         });
     }
 
+    componentWillUnmount() {
+        commentStore.removeAllListeners();
+    }
+
     render() {
         return (
             <div className="commentBox">
