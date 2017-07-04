@@ -4,8 +4,10 @@
   "description": "blog from scratch",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.16.2",
     "draft-js": "^0.10.1",
-    "history": "^4.6.3",
+    "flux": "^3.1.2",
+    "qs": "^6.5.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^4.1.1",
@@ -13,8 +15,10 @@
     "remarkable": "^1.7.1"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/draft-js": "^0.10.4",
-    "@types/history": "^4.6.0",
+    "@types/flux": "^3.1.1",
+    "@types/qs": "^6.4.0",
     "@types/react": "^15.0.30",
     "@types/react-dom": "^15.5.0",
     "babel": "^6.23.0",

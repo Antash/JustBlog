@@ -1,21 +1,15 @@
 ﻿import React from 'react';
-import CommentForm from './CommentBox/commentForm'
-import CommentList from './CommentBox/commentList'
-import { ICommentData } from './CommentBox/commentData'
-import { Ajax } from '../Utils/ajax'
-
-export interface ICommentBoxProps {
-    url: string;
-    submitUrl: string;
-    deleteUrl: string;
-    likeUrl: string;
-}
+import CommentForm from './CommentBox/commentForm';
+import CommentList from './CommentBox/commentList';
+import commentStore from '../Stores/commentStore';
+import { ICommentData } from '../Models/commentData';
+import * as CommentActions from '../Actions/commentActions';
 
 interface ICommentBoxState {
     data: Array<ICommentData>;
 }
 
-export default class CommentBox extends React.Component<ICommentBoxProps, ICommentBoxState> {
+export default class CommentBox extends React.Component<{}, ICommentBoxState> {
     constructor() {
         super();
         this.state = {
@@ -24,41 +18,27 @@ export default class CommentBox extends React.Component<ICommentBoxProps, IComme
     }
 
     loadCommentsFromServer() {
-        Ajax.get(this.props.url, this.setState.bind(this));
+        CommentActions.loadComments();
     }
 
     componentDidMount() {
         this.loadCommentsFromServer();
     }
 
-    handleCommentSubmit(comment: ICommentData) {
-        var data = new FormData();
-        data.append('Author', comment.author);
-        data.append('Text', comment.text);
-        Ajax.post(this.props.submitUrl, data, this.loadCommentsFromServer.bind(this));
-    }
-
-    handleCommentDelete(id: number) {
-        var data = new FormData();
-        data.append('Id', id);
-        Ajax.post(this.props.deleteUrl, data, this.loadCommentsFromServer.bind(this));
-    }
-
-    handleCommentLike(id: number) {
-        var data = new FormData();
-        data.append('Id', id);
-        Ajax.post(this.props.likeUrl, data, this.loadCommentsFromServer.bind(this));
+    componentWillMount() {
+        commentStore.addListener("change", () => {
+            this.setState({
+                data: commentStore.getAllComments()
+            });
+        });
     }
 
     render() {
         return (
             <div className="commentBox">
                 <h3>Comments</h3>
-                <CommentList
-                    data={this.state.data}
-                    onCommentDelete={this.handleCommentDelete.bind(this)}
-                    onCommentLike={this.handleCommentLike.bind(this)} />
-                <CommentForm onCommentSubmit={this.handleCommentSubmit.bind(this)} />
+                <CommentList data={this.state.data} />
+                <CommentForm />
             </div>
         );
     }

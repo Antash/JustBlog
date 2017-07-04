@@ -140,6 +140,8 @@
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
@@ -181,11 +183,17 @@
     <Content Include="Content\vendor\font-awesome\css\font-awesome.css" />
     <Content Include="Content\vendor\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\vendor\jquery\jquery.js" />
+    <Content Include="Content\vendor\jquery\jquery.min.js" />
+    <TypeScriptCompile Include="Scripts\App\Actions\action.tsx" />
+    <Content Include="Scripts\Legacy\clean-blog.js" />
+    <Content Include="Scripts\Legacy\clean-blog.min.js" />
     <Content Include="Views\Blog\Posts.cshtml" />
     <TypeScriptCompile Include="Scripts\%40Types\alltypes.d.ts" />
+    <TypeScriptCompile Include="Scripts\App\Actions\commentActions.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Actions\actionTypes.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\commentBox.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\comment.tsx" />
-    <TypeScriptCompile Include="Scripts\App\Components\CommentBox\commentData.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\commentForm.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\commentList.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\footer.tsx" />
@@ -204,12 +212,15 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+    <TypeScriptCompile Include="Scripts\App\Models\commentData.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\about.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\contact.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\home.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\layout.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\post.tsx" />
-    <TypeScriptCompile Include="Scripts\App\Utils\ajax.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Stores\commentStore.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Stores\postStore.tsx" />
+    <TypeScriptCompile Include="Scripts\App\dispatcher.tsx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JustBlog.Core\JustBlog.Core.csproj">

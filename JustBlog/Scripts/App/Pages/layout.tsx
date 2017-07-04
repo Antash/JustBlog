@@ -21,7 +21,7 @@ export default class Layout extends React.Component<{}, {}> {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/about" component={About} />
-                    <Route path="/post" component={Post} />
+                    <Route path="/post/:postId?" component={Post} />
                     <Route path="/contact" component={Contact} />
                 </Switch>
 

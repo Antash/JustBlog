@@ -1,11 +1,8 @@
 ﻿import React from 'react';
-import { ICommentData } from './commentData'
+import { ICommentData } from "../../Models/commentData";
+import * as CommentActions from '../../Actions/commentActions';
 
-export interface ICommentFormProps {
-    onCommentSubmit: (comment: ICommentData) => void;
-}
-
-export default class CommentForm extends React.Component<ICommentFormProps, ICommentData> {
+export default class CommentForm extends React.Component<{}, ICommentData> {
     constructor() {
         super();
         this.state = {
@@ -13,12 +10,15 @@ export default class CommentForm extends React.Component<ICommentFormProps, ICom
             text: ''
         };
     }
+
     handleAuthorChange(e : any) {
         this.setState({ author: e.target.value });
     }
+
     handleTextChange(e: any) {
         this.setState({ text: e.target.value });
     }
+
     handleSubmit(e: any) {
         e.preventDefault();
         var author = this.state.author.trim();
@@ -26,9 +26,10 @@ export default class CommentForm extends React.Component<ICommentFormProps, ICom
         if (!text || !author) {
             return;
         }
-        this.props.onCommentSubmit({ author: author, text: text });
+        CommentActions.addComment({ author: author, text: text });
         this.setState({ author: '', text: '' });
     }
+
     render() {
         return (
             <form className="commentForm" onSubmit={this.handleSubmit.bind(this)}>

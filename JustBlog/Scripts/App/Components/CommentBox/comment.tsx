@@ -1,21 +1,20 @@
 ﻿import React from 'react';
 import Remarkable from 'remarkable';
-import { ICommentData } from "./commentData";
+import { ICommentData } from "../../Models/commentData";
+import * as CommentActions from '../../Actions/commentActions';
 
 export interface ICommentProps {
     comment: ICommentData;
-    onCommentDelete: (id: number) => void;
-    onCommentLike: (id: number) => void;
     children?: string;
 }
 
 export default class Comment extends React.Component<ICommentProps, {}> {
     delete() {
-        this.props.onCommentDelete(this.props.comment.id);
+        CommentActions.deleteComment(this.props.comment.id);
     }
 
     like() {
-        this.props.onCommentLike(this.props.comment.id);
+        CommentActions.likeComment(this.props.comment.id);
     }
 
     rawMarkup() {
