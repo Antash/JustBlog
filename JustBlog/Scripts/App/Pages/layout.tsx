@@ -30,13 +30,19 @@ export default class Layout extends React.Component<{}, {}> {
                         <Header header="404 Page Not Found" subheader="We are sorry but the page you are looking for does not exist." imageFileName="about-bg.jpg" />} />
                 </Switch>
 
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
-                    <Route path="/post/:postId?" component={Post} />
-                    <Route path="/contact" component={Contact} />
-                    <Route path="/login" component={LoginForm} />
-                </Switch>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                            <Switch>
+                                <Route exact path="/" component={Home} />
+                                <Route path="/about" component={About} />
+                                <Route path="/post/:postId?" component={Post} />
+                                <Route path="/contact" component={Contact} />
+                                <Route path="/login" component={LoginForm} />
+                            </Switch>
+                        </div>
+                    </div>
+                </div>
 
                 <Footer />
             </div>

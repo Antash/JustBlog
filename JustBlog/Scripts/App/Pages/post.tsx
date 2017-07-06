@@ -28,9 +28,9 @@ export default class Post extends React.Component<IPostProps, IPostData> {
     render() {
         console.log();
         return (
-            <div>
+            <article>
                 <span dangerouslySetInnerHTML={this.state.text} />
-            </div>
+            </article>
         );
     }
 }
