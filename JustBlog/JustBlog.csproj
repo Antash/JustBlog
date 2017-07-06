@@ -207,7 +207,6 @@
     <TypeScriptCompile Include="Scripts\App\Components\postHeader.tsx" />
     <TypeScriptCompile Include="Scripts\App\index.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\postEditor.tsx" />
-    <Content Include="Scripts\bundle.js" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Web.config" />
     <Content Include="Web.config" />
