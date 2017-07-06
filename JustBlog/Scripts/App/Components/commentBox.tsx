@@ -17,12 +17,8 @@ export default class CommentBox extends React.Component<{}, ICommentBoxState> {
         };
     }
 
-    loadCommentsFromServer() {
-        CommentActions.loadComments();
-    }
-
     componentDidMount() {
-        this.loadCommentsFromServer();
+        CommentActions.loadComments();
     }
 
     componentWillMount() {

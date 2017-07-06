@@ -120,6 +120,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -132,12 +133,12 @@
   <ItemGroup>
     <Content Include="Content\clean-blog.css" />
     <Content Include="Content\clean-blog.min.css" />
-    <Content Include="Content\editor.css" />
     <Content Include="Content\Images\about-bg.jpg" />
     <Content Include="Content\Images\contact-bg.jpg" />
     <Content Include="Content\Images\home-bg.jpg" />
     <Content Include="Content\Images\post-bg.jpg" />
     <Content Include="Content\Images\post-sample-image.jpg" />
+    <Content Include="Content\react-draft-wysiwyg.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.css" />
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
@@ -200,10 +201,10 @@
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\commentList.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\footer.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\header.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Components\loginForm.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\navigator.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\postHeader.tsx" />
     <TypeScriptCompile Include="Scripts\App\index.tsx" />
-    <TypeScriptCompile Include="Scripts\App\Components\PostEditor\editorToolbar.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\postEditor.tsx" />
     <Content Include="Scripts\bundle.js" />
     <Content Include="tsconfig.json" />
@@ -219,8 +220,11 @@
     <TypeScriptCompile Include="Scripts\App\Models\postData.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\about.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\contact.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Pages\edit.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\home.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\layout.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Pages\login.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Pages\manager.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\post.tsx" />
     <TypeScriptCompile Include="Scripts\App\Stores\commentStore.tsx" />
     <TypeScriptCompile Include="Scripts\App\Stores\postStore.tsx" />
