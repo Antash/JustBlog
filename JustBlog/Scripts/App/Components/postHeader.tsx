@@ -1,23 +1,26 @@
 ﻿import React from 'react';
 import postStore from '../Stores/postStore';
+import { IPostAbstract } from '../Models/postData';
 
-export default class PostHeader extends React.Component<{}, {}> {
+export default class PostHeader extends React.Component<{}, IPostAbstract> {
+    constructor() {
+        super();
+        this.state = postStore.getActivePostAbstract();
+    }
 
     componentWillMount() {
-        commentStore.addListener("change", () => {
-            this.setState({
-                data: commentStore.getAllComments()
-            });
+        postStore.addListener("change", () => {
+            this.setState(postStore.getActivePostAbstract());
         });
     }
 
     componentWillUnmount() {
-        commentStore.removeAllListeners();
+        postStore.removeAllListeners();
     }
 
     render() {
         const imageStyle = {
-            backgroundImage: "url('Content/Images/" + this.props.imageFileName + "')"
+            backgroundImage: "url('Content/Images/" + this.state.bgImageFileName + "')"
         };
         return (
             <header className="intro-header" style={imageStyle}>
@@ -25,9 +28,9 @@ export default class PostHeader extends React.Component<{}, {}> {
                     <div className="row">
                         <div className="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                             <div className="post-heading">
-                                <h1>{this.props.header}</h1>
-                                <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                                <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
+                                <h1>{this.state.header}</h1>
+                                <h2 className="subheading">{this.state.subheader}</h2>
+                                <span className="meta">Posted by <a href="#">{this.state.author}</a> on {this.state.publishDate}</span>
                             </div>
                         </div>
                     </div>

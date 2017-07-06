@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -193,6 +193,7 @@
     <TypeScriptCompile Include="Scripts\%40Types\alltypes.d.ts" />
     <TypeScriptCompile Include="Scripts\App\Actions\commentActions.tsx" />
     <TypeScriptCompile Include="Scripts\App\Actions\actionTypes.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Actions\postActions.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\commentBox.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\comment.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\commentForm.tsx" />
@@ -215,7 +216,7 @@
       <SubType>Designer</SubType>
     </Content>
     <TypeScriptCompile Include="Scripts\App\Models\commentData.tsx" />
-    <TypeScriptCompile Include="Scripts\App\Models\postAbstract.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Models\postData.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\about.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\contact.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\home.tsx" />

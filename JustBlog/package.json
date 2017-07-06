@@ -17,7 +17,6 @@
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
-    "@types/draft-js": "^0.10.4",
     "@types/flux": "^3.1.1",
     "@types/qs": "^6.4.0",
     "@types/react": "^15.0.30",
