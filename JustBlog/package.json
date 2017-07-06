@@ -10,6 +10,7 @@
     "qs": "^6.5.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-draft-wysiwyg": "^1.10.0",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "remarkable": "^1.7.1"

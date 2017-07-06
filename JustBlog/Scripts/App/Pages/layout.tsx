@@ -13,10 +13,17 @@ export default class Layout extends React.Component<{}, {}> {
         return (
             <div>
                 <Navigator />
-                <Header />
-                <div>
-                hello world!
-                </div>
+
+                <Switch>
+                    <Route exact path="/" render={() =>
+                        <Header header="Clean Blog" subheader="A Clean Blog Theme by Start Bootstrap" imageFileName="home-bg.jpg" />} />
+                    <Route path="/about" render={() =>
+                        <Header header="About Me" subheader="This is what I do." imageFileName="about-bg.jpg" />} />
+                    <Route path="/post/:postId?" render={() =>
+                        <Header header="Sample Post" subheader="Just a post." imageFileName="post-bg.jpg" />} />
+                    <Route path="/contact" render={() =>
+                        <Header header="Contact Me" subheader="Have questions? I have answers(maybe)." imageFileName="contact-bg.jpg" />} />
+                </Switch>
 
                 <Switch>
                     <Route exact path="/" component={Home} />

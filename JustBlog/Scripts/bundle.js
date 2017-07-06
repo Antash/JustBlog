@@ -37846,11 +37846,13 @@ class Layout extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
             'div',
             null,
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_6__Components_navigator__["a" /* default */], null),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Components_header__["a" /* default */], null),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
+                __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Switch */],
                 null,
-                'hello world!'
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { exact: true, path: '/', render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Components_header__["a" /* default */], { header: 'Clean Blog', subheader: 'A Clean Blog Theme by Start Bootstrap', imageFileName: 'home-bg.jpg' }) }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { path: '/about', render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Components_header__["a" /* default */], { header: 'About Me', subheader: 'This is what I do.', imageFileName: 'about-bg.jpg' }) }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { path: '/post/:postId?', render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Components_header__["a" /* default */], { header: 'Sample Post', subheader: 'Just a post.', imageFileName: 'post-bg.jpg' }) }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1_react_router_dom__["c" /* Route */], { path: '/contact', render: () => __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__Components_header__["a" /* default */], { header: 'Contact Me', subheader: 'Have questions? I have answers(maybe).', imageFileName: 'contact-bg.jpg' }) })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1_react_router_dom__["d" /* Switch */],
@@ -40255,6 +40257,10 @@ class CommentBox extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component
         });
     }
 
+    componentWillUnmount() {
+        __WEBPACK_IMPORTED_MODULE_3__Stores_commentStore__["a" /* default */].removeAllListeners();
+    }
+
     render() {
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
@@ -41898,9 +41904,7 @@ class CommentList extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Componen
         var commentNodes = this.props.data.map(function (comment) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 __WEBPACK_IMPORTED_MODULE_1__comment__["a" /* default */],
-                {
-                    key: comment.id,
-                    comment: comment },
+                { key: comment.id, comment: comment },
                 comment.text
             );
         }.bind(this));
@@ -58183,7 +58187,7 @@ class Navigator extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component 
 class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
     render() {
         const imageStyle = {
-            backgroundImage: "url('Content/Images/home-bg.jpg')"
+            backgroundImage: "url('Content/Images/" + this.props.imageFileName + "')"
         };
         return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             "header",
@@ -58203,13 +58207,13 @@ class Header extends __WEBPACK_IMPORTED_MODULE_0_react___default.a.Component {
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 "h1",
                                 null,
-                                "Clean Blog"
+                                this.props.header
                             ),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("hr", { className: "small" }),
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                                 "span",
                                 { className: "subheading" },
-                                "A Clean Blog Theme by Start Bootstrap"
+                                this.props.subheader
                             )
                         )
                     )

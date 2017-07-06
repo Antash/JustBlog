@@ -5,7 +5,6 @@ import * as CommentActions from '../../Actions/commentActions';
 
 export interface ICommentProps {
     comment: ICommentData;
-    children?: string;
 }
 
 export default class Comment extends React.Component<ICommentProps, {}> {

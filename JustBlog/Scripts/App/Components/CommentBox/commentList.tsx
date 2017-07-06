@@ -10,9 +10,7 @@ export default class CommentList extends React.Component<ICommentListProps, {}> 
     render() {
         var commentNodes = this.props.data.map(function (comment: ICommentData) {
             return (
-                <Comment
-                    key={comment.id}
-                    comment={comment}>
+                <Comment key={comment.id} comment={comment}>
                     {comment.text}
                 </Comment>
             );
