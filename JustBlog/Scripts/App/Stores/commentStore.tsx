@@ -22,9 +22,6 @@ class CommentStore extends EventEmitter {
                 this.data = action.data.data;
                 this.emit("change");
             }
-            case Types.DELETE_COMMENT: {
-                this.emit("change");
-            }
         }
     }
 }

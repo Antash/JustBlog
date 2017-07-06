@@ -215,6 +215,7 @@
       <SubType>Designer</SubType>
     </Content>
     <TypeScriptCompile Include="Scripts\App\Models\commentData.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Models\postAbstract.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\about.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\contact.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\home.tsx" />

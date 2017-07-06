@@ -6,6 +6,7 @@ import Post from './post';
 import Contact from './contact';
 import Navigator from '../Components/navigator';
 import Header from '../Components/header';
+import PostHeader from '../Components/postHeader';
 import Footer from '../Components/footer';
 
 export default class Layout extends React.Component<{}, {}> {
@@ -19,8 +20,7 @@ export default class Layout extends React.Component<{}, {}> {
                         <Header header="Clean Blog" subheader="A Clean Blog Theme by Start Bootstrap" imageFileName="home-bg.jpg" />} />
                     <Route path="/about" render={() =>
                         <Header header="About Me" subheader="This is what I do." imageFileName="about-bg.jpg" />} />
-                    <Route path="/post/:postId?" render={() =>
-                        <Header header="Sample Post" subheader="Just a post." imageFileName="post-bg.jpg" />} />
+                    <Route path="/post/:postId?" component={PostHeader} />
                     <Route path="/contact" render={() =>
                         <Header header="Contact Me" subheader="Have questions? I have answers(maybe)." imageFileName="contact-bg.jpg" />} />
                 </Switch>
