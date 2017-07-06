@@ -121,6 +121,7 @@
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
+    <Compile Include="Controllers\ReactController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -187,10 +188,10 @@
     <Content Include="Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\vendor\jquery\jquery.js" />
     <Content Include="Content\vendor\jquery\jquery.min.js" />
+    <Content Include="Views\React\Index.cshtml" />
     <TypeScriptCompile Include="Scripts\App\Actions\action.tsx" />
     <Content Include="Scripts\Legacy\clean-blog.js" />
     <Content Include="Scripts\Legacy\clean-blog.min.js" />
-    <Content Include="Views\Blog\Posts.cshtml" />
     <TypeScriptCompile Include="Scripts\%40Types\alltypes.d.ts" />
     <TypeScriptCompile Include="Scripts\App\Actions\commentActions.tsx" />
     <TypeScriptCompile Include="Scripts\App\Actions\actionTypes.tsx" />
@@ -209,8 +210,6 @@
     <Content Include="Scripts\bundle.js" />
     <Content Include="tsconfig.json" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Global.asax" />
     <Content Include="packages.config">
@@ -240,8 +239,6 @@
     <None Include="deploy_boromir.pubxml">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\Admin\Login.cshtml" />
-    <Content Include="Views\Admin\Manage.cshtml" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
   <ItemGroup>

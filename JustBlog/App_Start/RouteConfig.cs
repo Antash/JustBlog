@@ -12,25 +12,25 @@ namespace JustBlog
             routes.MapRoute(
                 name: "Comments",
                 url: "comments",
-                defaults: new { controller = "Admin", action = "Comments" }
+                defaults: new { controller = "Comment", action = "Comments" }
             );
 
             routes.MapRoute(
                 name: "NewComment",
                 url: "comments/new",
-                defaults: new { controller = "Admin", action = "AddComment" }
+                defaults: new { controller = "Comment", action = "Add" }
             );
 
             routes.MapRoute(
                 name: "DeleteComment",
                 url: "comments/del",
-                defaults: new { controller = "Admin", action = "DeleteComment" }
+                defaults: new { controller = "Comment", action = "Delete" }
             );
 
             routes.MapRoute(
                 name: "LikeComment",
                 url: "comments/like",
-                defaults: new { controller = "Admin", action = "LikeComment" }
+                defaults: new { controller = "Comment", action = "Like" }
             );
 
             routes.MapRoute(
@@ -60,7 +60,7 @@ namespace JustBlog
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Blog", action = "Posts", id = UrlParameter.Optional }
+                defaults: new { controller = "React", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

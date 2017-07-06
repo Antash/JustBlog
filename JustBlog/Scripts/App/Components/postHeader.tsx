@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import postStore from '../Stores/postStore';
 import { IPostAbstract } from '../Models/postData';
+import { Link } from 'react-router-dom';
 
 export default class PostHeader extends React.Component<{}, IPostAbstract> {
     constructor() {
@@ -30,7 +31,7 @@ export default class PostHeader extends React.Component<{}, IPostAbstract> {
                             <div className="post-heading">
                                 <h1>{this.state.header}</h1>
                                 <h2 className="subheading">{this.state.subheader}</h2>
-                                <span className="meta">Posted by <Link to={{ pathname: "/" }} >this.state.author</Link> on {this.state.publishDate}</span>
+                                <span className="meta">Posted by <Link to={{ pathname: "/" }} >{this.state.author}</Link> on {this.state.publishDate}</span>
                             </div>
                         </div>
                     </div>

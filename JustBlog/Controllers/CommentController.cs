@@ -22,21 +22,21 @@ namespace JustBlog.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddComment(Comment comment)
+        public ActionResult Add(Comment comment)
         {
             _blogRepository.AddComment(comment);
             return new JsonCamelCaseResult("Add success", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult DeleteComment(int id)
+        public ActionResult Delete(int id)
         {
             _blogRepository.DeleteComment(id);
             return new JsonCamelCaseResult("Delete success", JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
-        public ActionResult LikeComment(int id)
+        public ActionResult Like(int id)
         {
             _blogRepository.LikeComment(id);
             return new JsonCamelCaseResult("Like success", JsonRequestBehavior.AllowGet);
