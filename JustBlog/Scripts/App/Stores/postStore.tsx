@@ -1,6 +1,6 @@
 ﻿import { EventEmitter } from 'fbemitter';
 import dispatcher from '../dispatcher';
-import { Action } from "../Actions/action";
+import { Action } from '../Actions/action';
 import * as Types from '../Actions/actionTypes';
 import { IPostData, IPostAbstract } from '../Models/postData';
 

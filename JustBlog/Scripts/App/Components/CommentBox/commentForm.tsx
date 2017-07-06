@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { ICommentData } from "../../Models/commentData";
+import { ICommentData } from '../../Models/commentData';
 import * as CommentActions from '../../Actions/commentActions';
 
 export default class CommentForm extends React.Component<{}, ICommentData> {

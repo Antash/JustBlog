@@ -195,6 +195,7 @@
     <TypeScriptCompile Include="Scripts\%40Types\alltypes.d.ts" />
     <TypeScriptCompile Include="Scripts\App\Actions\commentActions.tsx" />
     <TypeScriptCompile Include="Scripts\App\Actions\actionTypes.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Actions\loginActions.tsx" />
     <TypeScriptCompile Include="Scripts\App\Actions\postActions.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\commentBox.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\comment.tsx" />
@@ -215,6 +216,7 @@
       <SubType>Designer</SubType>
     </Content>
     <TypeScriptCompile Include="Scripts\App\Models\commentData.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Models\loginData.tsx" />
     <TypeScriptCompile Include="Scripts\App\Models\postData.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\about.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\contact.tsx" />
@@ -224,6 +226,7 @@
     <TypeScriptCompile Include="Scripts\App\Pages\login.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\manager.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\post.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Services\authService.tsx" />
     <TypeScriptCompile Include="Scripts\App\Stores\commentStore.tsx" />
     <TypeScriptCompile Include="Scripts\App\Stores\postStore.tsx" />
     <TypeScriptCompile Include="Scripts\App\dispatcher.tsx" />
