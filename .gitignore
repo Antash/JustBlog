@@ -42,3 +42,4 @@ Thumbs.db
 /.vs
 /JustBlog/node_modules
 /Justblog/Scripts/Build
+/Justblog/Scripts/bundle*
