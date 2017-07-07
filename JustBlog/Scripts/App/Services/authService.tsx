@@ -1,23 +1,15 @@
-﻿class AuthService {
+﻿import axios from 'axios';
+import qs from 'qs';
+import * as LoginActions from '../Actions/loginActions';
+
+class AuthService {
     login(username: string, password: string) {
-        // We call the server to log the user in.
-        return when(request({
-            url: ‘http://localhost:3001/sessions/create',
-            method: ‘POST’,
-            crossOrigin: true,
-            type: ‘json’,
-            data: {
-                username, password
-            }
-    }))
-    .then(function(response) {
-        // We get a JWT back.
-        let jwt = response.id_token;
-        // We trigger the LoginAction with that JWT.
-        LoginActions.loginUser(jwt);
-        return true;
-    });
-}
+        axios.post("/login", qs.stringify({ User: username, Password: password }))
+            .then(response => {
+                let jwt = response.data.id_token;
+                LoginActions.login(jwt);
+            });
+    }
 }
 
 export default new AuthService()

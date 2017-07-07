@@ -22,7 +22,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <TypeScriptToolsVersion>2.3</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.4</TypeScriptToolsVersion>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -228,6 +228,7 @@
     <TypeScriptCompile Include="Scripts\App\Pages\post.tsx" />
     <TypeScriptCompile Include="Scripts\App\Services\authService.tsx" />
     <TypeScriptCompile Include="Scripts\App\Stores\commentStore.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Stores\loginStore.tsx" />
     <TypeScriptCompile Include="Scripts\App\Stores\postStore.tsx" />
     <TypeScriptCompile Include="Scripts\App\dispatcher.tsx" />
   </ItemGroup>

@@ -6,3 +6,5 @@ export const DELETE_COMMENT_ERROR: string = "DELETE_COMMENT_ERROR";
 
 export const RECIEVE_ABSTRACTS: string = "RECIEVE_ABSTRACTS";
 export const RECIEVE_POST: string = "RECIEVE_POST";
+
+export const LOGIN_USER: string = "LOGIN_USER";

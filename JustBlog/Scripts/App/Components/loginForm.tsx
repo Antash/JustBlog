@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { ILoginData } from '../Models/loginData';
+import authService from '../Services/authService';
 
 export default class LoginForm extends React.Component<{}, ILoginData> {
     constructor() {
@@ -20,6 +21,7 @@ export default class LoginForm extends React.Component<{}, ILoginData> {
 
     handleSubmit(e: any) {
         e.preventDefault();
+        authService.login(this.state.user, this.state.password);
     }
 
     render() {
