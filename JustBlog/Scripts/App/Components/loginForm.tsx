@@ -6,13 +6,13 @@ export default class LoginForm extends React.Component<{}, ILoginData> {
     constructor() {
         super();
         this.state = {
-            user: "",
+            userName: "",
             password: ""
         };
     }
 
     handleUserChange(e: any) {
-        this.setState({ user: e.target.value });
+        this.setState({ userName: e.target.value });
     }
 
     handlePasswordChange(e: any) {
@@ -21,7 +21,7 @@ export default class LoginForm extends React.Component<{}, ILoginData> {
 
     handleSubmit(e: any) {
         e.preventDefault();
-        authService.login(this.state.user, this.state.password);
+        authService.login(this.state);
     }
 
     render() {
@@ -29,7 +29,7 @@ export default class LoginForm extends React.Component<{}, ILoginData> {
             <form className="loginForm" onSubmit={this.handleSubmit.bind(this) }>
                 <input type="text"
                     placeholder="Login"
-                    value={this.state.user}
+                    value={this.state.userName}
                     onChange={this.handleUserChange.bind(this)} />
                 <input type="password"
                     placeholder="Password"

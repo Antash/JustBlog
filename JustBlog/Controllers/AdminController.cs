@@ -8,7 +8,7 @@ using System.Web.Security;
 
 namespace JustBlog.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IBlogRepository _blogRepository;
@@ -18,42 +18,19 @@ namespace JustBlog.Controllers
             _blogRepository = blogRepository;
         }
 
-        //[AllowAnonymous]
-        public ActionResult Login(string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
-
-                return View();
-                //RedirectToAction("Manage");
-            }
-
-            ViewBag.ReturnUrl = returnUrl;
-
-            return View();
-        }
-
-        //[HttpPost, AllowAnonymous, ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        [HttpPost, AllowAnonymous]
+        public ContentResult Login(LoginModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 if (FormsAuthentication.Authenticate(model.UserName, model.Password))
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false);
-
-                    if (!String.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                        return Redirect(returnUrl);
-
-                    return View();
-                    //RedirectToAction("Manage");
+                    return Content("success");
                 }
-
                 ModelState.AddModelError("", "The user name or password provided is incorrect.");
             }
-            return View();
+            return Content("fail");
         }
 
         public ActionResult Logout()

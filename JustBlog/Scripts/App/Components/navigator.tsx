@@ -1,7 +1,27 @@
 ﻿import React from 'react';
 import { Link } from 'react-router-dom';
+import loginStore from '../Stores/loginStore';
 
 export default class Navigator extends React.Component<{}, {}> {
+    constructor() {
+        super();
+        this.state = {
+            loggedIn: false
+        };
+    }
+
+    componentWillMount() {
+        loginStore.addListener("change", () => {
+            this.setState({
+                loggedIn: loginStore.isLoggenIn()
+            });
+        });
+    }
+
+    componentWillUnmount() {
+        loginStore.removeAllListeners();
+    }
+
     render() {
         return (
             <nav className="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -27,6 +47,11 @@ export default class Navigator extends React.Component<{}, {}> {
                             <li>
                                 <Link to="/contact">Contact</Link>
                             </li>
+                            {this.state.loggenIn &&
+                                <li>
+                                    <Link to="/manage">Manage</Link>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </div>

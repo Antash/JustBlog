@@ -224,7 +224,7 @@
     <TypeScriptCompile Include="Scripts\App\Pages\home.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\layout.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\login.tsx" />
-    <TypeScriptCompile Include="Scripts\App\Pages\manager.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Pages\manage.tsx" />
     <TypeScriptCompile Include="Scripts\App\Pages\post.tsx" />
     <TypeScriptCompile Include="Scripts\App\Services\authService.tsx" />
     <TypeScriptCompile Include="Scripts\App\Stores\commentStore.tsx" />

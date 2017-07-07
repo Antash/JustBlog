@@ -35,7 +35,7 @@ namespace JustBlog
 
             routes.MapRoute(
                 "Login",
-                "Login",
+                "login",
                 new { controller = "Admin", action = "Login" }
             );
 
