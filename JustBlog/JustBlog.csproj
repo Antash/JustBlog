@@ -197,6 +197,7 @@
     <TypeScriptCompile Include="Scripts\App\Actions\actionTypes.tsx" />
     <TypeScriptCompile Include="Scripts\App\Actions\loginActions.tsx" />
     <TypeScriptCompile Include="Scripts\App\Actions\postActions.tsx" />
+    <TypeScriptCompile Include="Scripts\App\Components\authComponent.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\commentBox.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\comment.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\CommentBox\commentForm.tsx" />

@@ -1,17 +1,12 @@
 ﻿import React from 'react';
-import loginStore from '../Stores/loginStore';
+import AuthComponent from "../Components/authComponent";
+import { Link } from 'react-router-dom';
 
-export default class About extends React.Component<{}, {}> {
-    static willTransitionTo(transition) {
-        if (!loginStore.isLoggenIn()) {
-            transition.redirect("/login");
-        }
-    }
-
+export default class About extends AuthComponent {
     render() {
         return (
             <div>
-                hello manager!
+                <Link to="/post/new">Create new post!</Link>
             </div>
         );
     }

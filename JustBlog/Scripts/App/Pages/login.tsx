@@ -18,7 +18,7 @@ export default class Login extends React.Component<{}, ILoginState> {
     componentWillMount() {
         loginStore.addListener("change", () => {
             this.setState({
-                loggedIn: loginStore.isLoggenIn()
+                loggedIn: loginStore.isLoggedIn()
             });
         });
     }

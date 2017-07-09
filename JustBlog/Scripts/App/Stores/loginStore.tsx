@@ -11,7 +11,7 @@ class LoginStore extends EventEmitter {
         this.loginStatus = false;
     }
 
-    isLoggenIn(): boolean {
+    isLoggedIn(): boolean {
         return this.loginStatus;
     }
 
