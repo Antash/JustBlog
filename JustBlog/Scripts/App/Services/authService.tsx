@@ -8,9 +8,18 @@ class AuthService {
         //TODO uppercase qson convert
         axios.post("/login", qs.stringify({ UserName: credentials.userName, Password: credentials.password }))
             .then(response => {
-                //let jwt = response.data.id_token;
-                //LoginActions.login(jwt);
-                LoginActions.login();
+                if (response.data == "success") {
+                    LoginActions.login();
+                }
+            });
+    }
+
+    checkLogin() {
+        axios.get("/login")
+            .then(response => {
+                if (response.data == "success") {
+                    LoginActions.login();
+                }
             });
     }
 }

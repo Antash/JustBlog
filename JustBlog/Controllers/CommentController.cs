@@ -6,7 +6,7 @@ using JustBlog.Utils;
 
 namespace JustBlog.Controllers
 {
-    public class CommentController
+    public class CommentController : Controller
     {
         private readonly IBlogRepository _blogRepository;
 
@@ -15,31 +15,32 @@ namespace JustBlog.Controllers
             _blogRepository = blogRepository;
         }
 
+        [HttpGet]
         [OutputCache(Location = OutputCacheLocation.None)]
         public JsonCamelCaseResult Comments()
         {
-            return new JsonCamelCaseResult(new { data = _blogRepository.Comments() }, JsonRequestBehavior.AllowGet);
+            return new JsonCamelCaseResult(new { data = _blogRepository.Comments() });
         }
 
         [HttpPost]
-        public ActionResult Add(Comment comment)
+        public JsonCamelCaseResult Add(Comment comment)
         {
             _blogRepository.AddComment(comment);
-            return new JsonCamelCaseResult("Add success", JsonRequestBehavior.AllowGet);
+            return new JsonCamelCaseResult("Add success");
         }
 
         [HttpPost]
-        public ActionResult Delete(int id)
+        public JsonCamelCaseResult Delete(int id)
         {
             _blogRepository.DeleteComment(id);
-            return new JsonCamelCaseResult("Delete success", JsonRequestBehavior.AllowGet);
+            return new JsonCamelCaseResult("Delete success");
         }
 
         [HttpPost]
-        public ActionResult Like(int id)
+        public JsonCamelCaseResult Like(int id)
         {
             _blogRepository.LikeComment(id);
-            return new JsonCamelCaseResult("Like success", JsonRequestBehavior.AllowGet);
+            return new JsonCamelCaseResult("Like success");
         }
     }
 }

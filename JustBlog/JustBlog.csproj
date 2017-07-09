@@ -204,6 +204,7 @@
     <TypeScriptCompile Include="Scripts\App\Components\footer.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\header.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\loginForm.tsx" />
+    <TypeScriptCompile Include="Scripts\App\loginState.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\navigator.tsx" />
     <TypeScriptCompile Include="Scripts\App\Components\postHeader.tsx" />
     <TypeScriptCompile Include="Scripts\App\index.tsx" />

@@ -10,12 +10,38 @@ import Navigator from '../Components/navigator';
 import Header from '../Components/header';
 import PostHeader from '../Components/postHeader';
 import Footer from '../Components/footer';
+import { ILoginState } from "../loginState";
+import loginStore from '../Stores/loginStore';
+import authService from '../Services/authService';
 
-export default class Layout extends React.Component<{}, {}> {
+export default class Layout extends React.Component<{}, ILoginState> {
+    constructor() {
+        super();
+        this.state = {
+            loggedIn: false
+        };
+    }
+
+    componentDidMount() {
+        authService.checkLogin();
+    }
+
+    componentWillMount() {
+        loginStore.addListener("change", () => {
+            this.setState({
+                loggedIn: loginStore.isLoggenIn()
+            });
+        });
+    }
+
+    componentWillUnmount() {
+        loginStore.removeAllListeners();
+    }
+
     render() {
         return (
             <div>
-                <Navigator />
+                <Navigator loggedIn={this.state.loggedIn} />
 
                 <Switch>
                     <Route exact path="/" render={() =>
@@ -27,10 +53,12 @@ export default class Layout extends React.Component<{}, {}> {
                         <Header header="Contact Me" subheader="Have questions? I have answers(maybe)." imageFileName="contact-bg.jpg" />} />
                     <Route path="/login" render={() =>
                         <Header header="Login" subheader="Autorization needed for private features access." imageFileName="about-bg.jpg" />} />
-
-                    <Route path="/manage" render={() =>
-                        <Header header="ManageBlog" subheader="Posts, categories. etc." imageFileName="about-bg.jpg" />} />
-
+                    //private stuff
+                    {this.state.loggedIn &&
+                        <Route path="/manage" render={() =>
+                            <Header header="Manage Blog" subheader="Posts, categories, etc." imageFileName="about-bg.jpg" />} />
+                    }
+                    //404 page
                     <Route render={() =>
                         <Header header="404 Page Not Found" subheader="We are sorry but the page you are looking for does not exist." imageFileName="about-bg.jpg" />} />
                 </Switch>
@@ -44,8 +72,10 @@ export default class Layout extends React.Component<{}, {}> {
                                 <Route path="/post/:postId?" component={Post} />
                                 <Route path="/contact" component={Contact} />
                                 <Route path="/login" component={Login} />
-
-                                <Route path="/manage" component={Manage} />
+                                //private stuff
+                                {this.state.loggedIn &&
+                                    <Route path="/manage" component={Manage} />
+                                }
                             </Switch>
                         </div>
                     </div>

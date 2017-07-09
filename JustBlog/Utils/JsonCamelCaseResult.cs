@@ -8,6 +8,11 @@ namespace JustBlog.Utils
 {
     public class JsonCamelCaseResult : ActionResult
     {
+        public JsonCamelCaseResult(object data)
+            :this(data, JsonRequestBehavior.AllowGet)
+        {
+        }
+
         public JsonCamelCaseResult(object data, JsonRequestBehavior jsonRequestBehavior)
         {
             Data = data;
