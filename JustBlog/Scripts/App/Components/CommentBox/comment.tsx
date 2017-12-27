@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import Remarkable from 'remarkable';
 import { ICommentData } from "../../Models/commentData";
 import * as CommentActions from '../../Actions/commentActions';

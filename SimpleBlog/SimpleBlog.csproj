@@ -1,0 +1,201 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeIdentifier>ubuntu.16.04-x64</RuntimeIdentifier>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.1" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="6.10.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Content Remove="ClientApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\%40Types\react-draft-wysiwyg.d.ts" />
+    <None Remove="ClientApp\Actions\action.tsx" />
+    <None Remove="ClientApp\Actions\actionTypes.tsx" />
+    <None Remove="ClientApp\Actions\commentActions.tsx" />
+    <None Remove="ClientApp\Actions\loginActions.tsx" />
+    <None Remove="ClientApp\Actions\postActions.tsx" />
+    <None Remove="ClientApp\Components\authComponent.tsx" />
+    <None Remove="ClientApp\Components\commentBox.tsx" />
+    <None Remove="ClientApp\Components\CommentBox\comment.tsx" />
+    <None Remove="ClientApp\Components\CommentBox\commentForm.tsx" />
+    <None Remove="ClientApp\Components\CommentBox\commentList.tsx" />
+    <None Remove="ClientApp\Components\footer.tsx" />
+    <None Remove="ClientApp\Components\header.tsx" />
+    <None Remove="ClientApp\Components\loginForm.tsx" />
+    <None Remove="ClientApp\Components\navigator.tsx" />
+    <None Remove="ClientApp\Components\postEditor.tsx" />
+    <None Remove="ClientApp\Components\postHeader.tsx" />
+    <None Remove="wwwroot\Content\clean-blog.css" />
+    <None Remove="wwwroot\Content\clean-blog.min.css" />
+    <None Remove="wwwroot\Content\Images\about-bg.jpg" />
+    <None Remove="wwwroot\Content\Images\contact-bg.jpg" />
+    <None Remove="wwwroot\Content\Images\home-bg.jpg" />
+    <None Remove="wwwroot\Content\Images\post-bg.jpg" />
+    <None Remove="wwwroot\Content\Images\post-sample-image.jpg" />
+    <None Remove="wwwroot\Content\react-draft-wysiwyg.css" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\css\bootstrap.css" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\css\bootstrap.min.css" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\js\bootstrap.js" />
+    <None Remove="wwwroot\Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\css\font-awesome.css" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\css\font-awesome.min.css" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\animated.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\bordered-pulled.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\core.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\fixed-width.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\font-awesome.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\icons.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\larger.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\list.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\mixins.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\path.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\rotated-flipped.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\screen-reader.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\stacked.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\less\variables.less" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\font-awesome.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_animated.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_core.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_fixed-width.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_icons.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_larger.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_list.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_mixins.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_path.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_screen-reader.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_stacked.scss" />
+    <None Remove="wwwroot\Content\vendor\font-awesome\scss\_variables.scss" />
+    <None Remove="wwwroot\Content\vendor\jquery\jquery.js" />
+    <None Remove="wwwroot\Content\vendor\jquery\jquery.min.js" />
+    <None Remove="ClientApp\dispatcher.tsx" />
+    <None Remove="ClientApp\index.tsx" />
+    <None Remove="wwwroot\Legacy\clean-blog.js" />
+    <None Remove="wwwroot\Legacy\clean-blog.min.js" />
+    <None Remove="ClientApp\loginState.tsx" />
+    <None Remove="ClientApp\Models\commentData.tsx" />
+    <None Remove="ClientApp\Models\loginData.tsx" />
+    <None Remove="ClientApp\Models\postData.tsx" />
+    <None Remove="ClientApp\Pages\about.tsx" />
+    <None Remove="ClientApp\Pages\contact.tsx" />
+    <None Remove="ClientApp\Pages\edit.tsx" />
+    <None Remove="ClientApp\Pages\home.tsx" />
+    <None Remove="ClientApp\Pages\layout.tsx" />
+    <None Remove="ClientApp\Pages\login.tsx" />
+    <None Remove="ClientApp\Pages\manage.tsx" />
+    <None Remove="ClientApp\Pages\post.tsx" />
+    <None Remove="ClientApp\remarkable.d.ts" />
+    <None Remove="ClientApp\Services\authService.tsx" />
+    <None Remove="ClientApp\Stores\commentStore.tsx" />
+    <None Remove="ClientApp\Stores\loginStore.tsx" />
+    <None Remove="ClientApp\Stores\postStore.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleBlog.Core\SimpleBlog.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\@Types\react-draft-wysiwyg.d.ts" />
+    <TypeScriptCompile Include="ClientApp\Actions\action.tsx" />
+    <TypeScriptCompile Include="ClientApp\Actions\actionTypes.tsx" />
+    <TypeScriptCompile Include="ClientApp\Actions\commentActions.tsx" />
+    <TypeScriptCompile Include="ClientApp\Actions\loginActions.tsx" />
+    <TypeScriptCompile Include="ClientApp\Actions\postActions.tsx" />
+    <TypeScriptCompile Include="ClientApp\%40Types\remarkable.d.ts" />
+    <TypeScriptCompile Include="ClientApp\Components\authComponent.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\commentBox.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\CommentBox\comment.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\CommentBox\commentForm.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\CommentBox\commentList.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\footer.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\header.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\loginForm.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\navigator.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\postEditor.tsx" />
+    <TypeScriptCompile Include="ClientApp\Components\postHeader.tsx" />
+    <TypeScriptCompile Include="ClientApp\dispatcher.tsx" />
+    <TypeScriptCompile Include="ClientApp\index.tsx" />
+    <TypeScriptCompile Include="ClientApp\loginState.tsx" />
+    <TypeScriptCompile Include="ClientApp\Models\commentData.tsx" />
+    <TypeScriptCompile Include="ClientApp\Models\loginData.tsx" />
+    <TypeScriptCompile Include="ClientApp\Models\postData.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\about.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\contact.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\edit.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\home.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\layout.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\login.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\manage.tsx" />
+    <TypeScriptCompile Include="ClientApp\Pages\post.tsx" />
+    <TypeScriptCompile Include="ClientApp\Services\authService.tsx" />
+    <TypeScriptCompile Include="ClientApp\Stores\commentStore.tsx" />
+    <TypeScriptCompile Include="ClientApp\Stores\loginStore.tsx" />
+    <TypeScriptCompile Include="ClientApp\Stores\postStore.tsx" />
+  </ItemGroup>
+
+  <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+
+    <!-- In development, the dist files won't exist on the first run or when cloning to
+         a different machine, so rebuild them if not already present. -->
+    <Message Importance="high" Text="Performing first-run Webpack build..." />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec Command="npm install" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --config webpack.config.vendor.js --env.prod" />
+    <Exec Command="node node_modules/webpack/bin/webpack.js --env.prod" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="wwwroot\dist\**; ClientApp\dist\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

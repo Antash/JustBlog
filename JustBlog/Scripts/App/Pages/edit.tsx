@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import PostEditor from '../Components/postEditor';
 
 export default class Edit extends React.Component<{}, {}> {

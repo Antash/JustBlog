@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import postStore from '../Stores/postStore';
 import { IPostData, IPostAbstract } from '../Models/postData';
 import * as PostActions from '../Actions/postActions';

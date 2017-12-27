@@ -8,7 +8,7 @@ class CommentStore extends EventEmitter {
     data: Array<ICommentData>;
 
     constructor() {
-        super()
+        super();
         this.data = [];
     }
 

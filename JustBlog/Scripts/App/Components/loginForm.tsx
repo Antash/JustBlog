@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import * as React from 'react';
 import { ILoginData } from '../Models/loginData';
 import authService from '../Services/authService';
 

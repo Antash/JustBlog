@@ -1,6 +1,6 @@
-﻿import React from 'React';
+﻿import * as React from 'react';
 import loginStore from '../Stores/loginStore';
-import { ILoginState } from "../loginState";
+import { ILoginState } from '../loginState';
 
 export default class AuthComponent extends React.Component<{}, ILoginState> {
     constructor() {
